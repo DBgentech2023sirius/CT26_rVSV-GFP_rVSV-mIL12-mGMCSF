@@ -36,5 +36,3 @@ The following treatment regimens were described in the model:
     <img src="https://github.com/DBgentech2023sirius/VSV-mIL12-mGMCSF/blob/main/Images/Test_model_in_the_BioUML_button.png?raw=true" width="300" alt="Test model in the BioUML" />
   </a>
 </p>
-
-[![]()]()

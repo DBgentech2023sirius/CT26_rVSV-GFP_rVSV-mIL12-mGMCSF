@@ -32,7 +32,7 @@ The following treatment regimens were described in the model:
 <br>
 
 <p align="center">
-  <a href="https://uni.sirius-web.org:58443/bioumlweb/#de=data/Collaboration/VSV-IL12-GMCSF%20final/Data/Diagrams/Final%20model">
+  <a href="https://sirius-web.org/bioumlweb/#de=data/Collaboration%20(git)/CT26%20rVSV-GFP%20rVSV-mIL12-mGMCSF/Data/Diagrams/Ryapolova%20and%20Babaev%202026%20-%20CT26%20tumor%20treatment%20with%20rVSV-GFP%20and%20rVSV-mIL12-mGMCSF">
     <img src="https://github.com/DBgentech2023sirius/VSV-mIL12-mGMCSF/blob/main/Images/Test_model_in_the_BioUML_button.png?raw=true" width="300" alt="Test model in the BioUML" />
   </a>
 </p>

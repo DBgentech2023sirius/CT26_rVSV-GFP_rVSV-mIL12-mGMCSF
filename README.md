@@ -1,6 +1,6 @@
 # Modeling CT26 tumor treatment with VSV-GFP and VSV-mIL12-mGMCSF in mice
 
-Model is able to predict CT26 tumor growth curves in mice treated with placebo, VSV-GFP, and VSV-mIL12-mGMCSF
+Model is able to predict CT26 tumor growth curves in mice treated with placebo, rVSV-GFP, and rVSV-mIL12-mGMCSF
 
 ![Final model](https://github.com/DBgentech2023sirius/VSV-mIL12-mGMCSF/blob/main/Images/Model%20diagram.png?raw=true)
 

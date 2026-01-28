@@ -41,5 +41,5 @@ You can reproduce all plots used in our work in two ways (whichever is more conv
 
 <ol>
     <li>Clone the entire repository to your local computer and run Jupyter notebook "Create_plots.ipynb"</li></li>
-    <li>Run Jupyter notebook "Create_plots.ipynb" directly in Google Colab <a href="https://colab.research.google.com/drive/1po2Ts9VNnKtKzRMtrIbYwcjqBWyn2wKv?usp=drive_link" target="_blank"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" style="height: 20px;"></a></li>
+    <li>Run Jupyter notebook "Create_plots.ipynb" directly in Google Colab <a href="https://colab.research.google.com/drive/1po2Ts9VNnKtKzRMtrIbYwcjqBWyn2wKv?usp=drive_link" target="_blank"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" style="vertical-align: middle; height: 20px;"></a></li>
 </ol>

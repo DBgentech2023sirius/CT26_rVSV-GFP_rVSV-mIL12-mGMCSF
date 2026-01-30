@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" xmlns:comp="http://www.sbml.org/sbml/level3/version1/comp/version1" comp:required="true" level="3" version="2">
+  <model id="Ryapolova_and_Babaev_2026___CT26_tumor_treatment_with_rVSV_GFP_and_rVSV_mIL12_mGMCSF" name="My_model">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="logistic_growth">
+        <annotation>
+          <distribution xmlns="http://sbml.org/annotations/distribution" defnition=""/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci>p_u</ci>
+            </bvar>
+            <bvar>
+              <ci>Tu</ci>
+            </bvar>
+            <bvar>
+              <ci>T_max</ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <times/>
+                <ci>p_u</ci>
+                <ci>Tu</ci>
+              </apply>
+              <apply>
+                <minus/>
+                <cn>1.0</cn>
+                <apply>
+                  <divide/>
+                  <ci>Tu</ci>
+                  <ci>T_max</ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="logistic_growth_for_macrophages">
+        <annotation>
+          <distribution xmlns="http://sbml.org/annotations/distribution" defnition=""/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci>p_m1</ci>
+            </bvar>
+            <bvar>
+              <ci>M1</ci>
+            </bvar>
+            <bvar>
+              <ci>M2</ci>
+            </bvar>
+            <bvar>
+              <ci>M</ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <times/>
+                <ci>p_m1</ci>
+                <ci>M1</ci>
+              </apply>
+              <apply>
+                <minus/>
+                <cn>1.0</cn>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci>M1</ci>
+                    <ci>M2</ci>
+                  </apply>
+                  <ci>M</ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="multiple_three_variables">
+        <annotation>
+          <distribution xmlns="http://sbml.org/annotations/distribution" defnition=""/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci>first_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>second_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>third_variable</ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <times/>
+                <ci>first_variable</ci>
+                <ci>second_variable</ci>
+              </apply>
+              <ci>third_variable</ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="multiple_two_variables">
+        <annotation>
+          <distribution xmlns="http://sbml.org/annotations/distribution" defnition=""/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci>first_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>second_variable</ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci>first_variable</ci>
+              <ci>second_variable</ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="saturation_function">
+        <annotation>
+          <distribution xmlns="http://sbml.org/annotations/distribution" defnition=""/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci>constant</ci>
+            </bvar>
+            <bvar>
+              <ci>main_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>saturation_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>half_variable</ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <times/>
+                <ci>constant</ci>
+                <ci>main_variable</ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci>saturation_variable</ci>
+                <apply>
+                  <plus/>
+                  <ci>half_variable</ci>
+                  <ci>saturation_variable</ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="saturation_function_alt">
+        <annotation>
+          <distribution xmlns="http://sbml.org/annotations/distribution" defnition=""/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci>constant</ci>
+            </bvar>
+            <bvar>
+              <ci>main_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>first_saturation_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>second_saturation_variable</ci>
+            </bvar>
+            <bvar>
+              <ci>half_variable</ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <times/>
+                <ci>constant</ci>
+                <ci>main_variable</ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci>first_saturation_variable</ci>
+                <apply>
+                  <plus/>
+                  <ci>half_variable</ci>
+                  <ci>second_saturation_variable</ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="per_mkg" name="per_mkg">
+        <listOfUnits>
+          <unit exponent="-1" kind="kilogram" multiplier="1.0" scale="-9"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="dimensionless" name="dimensionless"/>
+      <unitDefinition id="mm_3" name="mm_3">
+        <listOfUnits>
+          <unit exponent="1" kind="litre" multiplier="1.0" scale="-6"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mkg" name="mkg">
+        <listOfUnits>
+          <unit exponent="1" kind="kilogram" multiplier="1.0" scale="-9"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="per_day" name="per_day">
+        <listOfUnits>
+          <unit exponent="-1" kind="second" multiplier="86400.0" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="day" name="day">
+        <listOfUnits>
+          <unit exponent="1" kind="second" multiplier="86400.0" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="tumor" name="Tumor" size="1.0" spatialDimensions="3" units="dimensionless"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="M1" initialAmount="0.0"/>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="M2" initialAmount="0.0"/>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="Teff" initialAmount="0.0"/>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="Ti" initialAmount="0.0"/>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="Tu" initialAmount="400000.0"/>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="VSV" initialAmount="0.0"/>
+      <species boundaryCondition="false" compartment="tumor" constant="false" hasOnlySubstanceUnits="false" id="mIL12_mGMCSF" initialAmount="0.0" name="mIL12-mGMCSF" substanceUnits="mkg"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="false" id="DC_m" name="DC_m" units="dimensionless" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Dendritic cell maturation</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="If_mIL12_mGMCSF" name="If_mIL12_mGMCSF" units="dimensionless" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">The discrete variable used to describe the mIL12-mGMCSF release from infected tumor cells, which can take the values 0 (no release corresponding to VSV-GFP case) or 1 (release corresponding to VSV-mIL12-mGMCSF case)</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="Immune_total" name="Immune_total" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Total immune cell population</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="M" name="M" value="1.0E8">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Carrying capacity of macrophages</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="TCD" name="TCD" units="per_day" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Tumor cell death</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="T_max" name="T_max" value="5.0E9">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Maximum tumor capacity</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="T_tot" name="T_tot" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">uninfected and infected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="T_volume" name="T_volume" units="mm_3" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Volume of total tumor</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="a_m1_IL12" name="a_m1_IL12" units="per_day" value="1193550.747202153">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">mIL12-induced M1 macrophages activation rate</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="a_m1_i" name="a_m1_i" units="per_day" value="1.0E-6">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which infected tumor cells activate M1</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="a_m1_u" name="a_m1_u" units="per_day" value="3.0E-6">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which uninfected tumor cells activate M1</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="a_m1_v" name="a_m1_v" units="per_day" value="1.0E-6">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which VSV activates M1</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="a_m2_u" name="a_m2_u" units="per_day" value="4.0E-8">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which uninfected tumor cells activate M2</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="alpha" name="alpha" units="per_day" value="1.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">A conditional parameter entered to preserve the dimension of the variable  DC_m</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_e_i" name="d_e_i" units="per_day" value="4.4">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which CD8+ T-cells eliminate infected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_e_u" name="d_e_u" units="per_day" value="0.44">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which CD8+ T-cells eliminate uninfected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_e_v" name="d_e_v" units="per_day" value="4.4">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which CD8+ T-cells eliminate VSV</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_m1_i" name="d_m1_i" units="per_day" value="1.5">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which M1 eliminate infected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_m1_u" name="d_m1_u" units="per_day" value="0.01">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which M1 eliminate uninfected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_m1_v" name="d_m1_v" units="per_day" value="1.5">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which M1 eliminate VSV</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_m2_u" name="d_m2_u" units="per_day" value="0.4">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which M2 support proliferation of uninfected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_u_e" name="d_u_e" value="1.0E-10">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which uninfected tumor cells inactivate CD8+ T-cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="d_v_u" name="d_v_u" value="0.021626177870843543">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which VSV infect uninfected tumor cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="delta" name="delta" units="per_day" value="0.475">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which the oncolytic virus kills an infected tumour cell</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="e_e" name="e_e" units="per_day" value="0.4">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Natural death rate of CD8+ T cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="e_m1" name="e_m1" units="per_day" value="0.2">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Natural death rate of M1 macrophages</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="e_m2" name="e_m2" units="per_day" value="0.2">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Natural death rate of M2 macrophages</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="e_v" name="e_v" units="per_day" value="2.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Death rate of oncolytic virus particles</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="first_VSV_dose" name="first_VSV_dose" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">The first intratumoral dose of VSV</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="first_VSV_injection_day" name="first_VSV_injection_day" value="11.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Days after tumor inoculation when first dose of VSV was administrated</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="h_e" name="h_e" value="1.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of CD8+ T-cells when they provide half of their maximum effect</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="h_m" name="h_m" value="1000.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of M1/M2 when they provide half of their maximum effect</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="h_u" name="h_u" value="5.0E9">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of uninfected tumor cells when they provide half of their maximum effect</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="h_u_v" name="h_u_v" value="100000.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Number of uninfected tumor cells when they provide half of the maximum VSV infection rate</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="k_DC" name="k_DC" units="per_mkg" value="8.95372401071887">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Impact rate of mGMCSF to DC_m</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="mIL12_mGMCSF_el" name="mIL12_mGMCSF_el" units="per_day" value="6.347279735828903">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">The spontaneous elimination rate of mIL12-mGMCSF fusion protein</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="p_e" name="p_e" value="230.24217339441668">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Proliferation rate of CD8+ T-cells</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="p_m1" name="p_m1" units="per_day" value="0.22">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Proliferation rate of M1</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="p_m2" name="p_m2" units="per_day" value="0.22">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Proliferation rate of M2</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="p_u" name="p_u" units="per_day" value="0.4">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Tumor proliferation rate</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="r_m1_0" name="r_m1_0" units="per_day" value="0.001">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Baseline M1→ M2 re-polarisation rate in response to cytokines in the microenvironment</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="r_m1_u" name="r_m1_u" units="per_day" value="4.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Rate at which uninfected tumor cells stimulate M1-M2 polarization</body>
+        </notes>
+      </parameter>
+      <parameter constant="true" id="r_m2_0" name="r_m2_0" units="per_day" value="0.001">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Baseline M1→ M2 re-polarisation rate in response to cytokines in the microenvironment</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="second_VSV_dose" name="second_VSV_dose" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">The second intratumoral dose of VSV</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="second_VSV_injection_day" name="second_VSV_injection_day" value="14.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Days after tumor inoculation when second dose of VSV was administrated</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="third_VSV_dose" name="third_VSV_dose" value="0.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">The third intratumoral dose of VSV</body>
+        </notes>
+      </parameter>
+      <parameter constant="false" id="third_VSV_injection_day" name="third_VSV_injection_day" value="17.0">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">Days after tumor inoculation when third dose of VSV was administrated</body>
+        </notes>
+      </parameter>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="DC_m">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <power/>
+              <ci>TCD</ci>
+              <cn>2.0</cn>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <power/>
+                <ci>TCD</ci>
+                <cn>2.0</cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci>alpha</ci>
+                  <apply>
+                    <plus/>
+                    <cn>1.0</cn>
+                    <apply>
+                      <times/>
+                      <ci>k_DC</ci>
+                      <ci>mIL12_mGMCSF</ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <cn>2.0</cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="TCD">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <ci>saturation_function</ci>
+                  <ci>d_e_u</ci>
+                  <ci>Tu</ci>
+                  <ci>Teff</ci>
+                  <ci>h_e</ci>
+                </apply>
+                <apply>
+                  <ci>saturation_function_alt</ci>
+                  <ci>d_m1_u</ci>
+                  <ci>Tu</ci>
+                  <ci>M1</ci>
+                  <ci>M2</ci>
+                  <ci>h_m</ci>
+                </apply>
+              </apply>
+              <ci>Tu</ci>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <ci>multiple_two_variables</ci>
+                    <ci>delta</ci>
+                    <ci>Ti</ci>
+                  </apply>
+                  <apply>
+                    <ci>saturation_function</ci>
+                    <ci>d_e_i</ci>
+                    <ci>Ti</ci>
+                    <ci>Teff</ci>
+                    <ci>h_e</ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <ci>saturation_function_alt</ci>
+                  <ci>d_m1_i</ci>
+                  <ci>Ti</ci>
+                  <ci>M1</ci>
+                  <ci>M2</ci>
+                  <ci>h_m</ci>
+                </apply>
+              </apply>
+              <ci>T_tot</ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="T_volume">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci>Tu</ci>
+              <ci>Ti</ci>
+            </apply>
+            <cn>1000000.0</cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Immune_total">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <plus/>
+              <ci>M1</ci>
+              <ci>M2</ci>
+            </apply>
+            <ci>Teff</ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="T_tot">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci>Tu</ci>
+            <ci>Ti</ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="M1_M2_basal_polarization" name="M1 -&gt; M2" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="false" species="M2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>M1</ci>
+              <ci>r_m1_0</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M1_M2_polarization_via_uninfected_tumor_cells" name="M1 -Tu-&gt; M2" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="false" species="M2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Tu"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function</ci>
+              <ci>r_m1_u</ci>
+              <ci>M1</ci>
+              <ci>Tu</ci>
+              <ci>h_u</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M1_activation_via_infected_tumor_cells" name="-Ti-&gt; M1" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Ti"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>a_m1_i</ci>
+              <ci>Ti</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M1_activation_via_uninfected_tumor_cells" name="-Tu-&gt; M1" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Tu"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>a_m1_u</ci>
+              <ci>Tu</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M1_elimination" name="M1 -&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>e_m1</ci>
+              <ci>M1</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M1_growth" name="-&gt; M1" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>logistic_growth_for_macrophages</ci>
+              <ci>p_m1</ci>
+              <ci>M1</ci>
+              <ci>M2</ci>
+              <ci>M</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M2_M1_basal_polarization" name="M2 -&gt; M1" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="M2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>M2</ci>
+              <ci>r_m2_0</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M2_activation_via_uninfected_tumor_cells" name="-Tu-&gt; M2" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="M2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Tu"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>a_m2_u</ci>
+              <ci>Tu</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M2_elimination" name="M2 -&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="M2" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>e_m2</ci>
+              <ci>M2</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="M2_growth" name="-&gt; M2" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="M2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>logistic_growth_for_macrophages</ci>
+              <ci>p_m2</ci>
+              <ci>M2</ci>
+              <ci>M1</ci>
+              <ci>M</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_1" name="tumor/Ti -&gt; tumor/VSV" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Ti" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="false" species="VSV" stoichiometry="2500"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>delta</ci>
+              <ci>Ti</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_2" name="Tu -VSV-&gt; Ti" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Tu" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="false" species="Ti" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="VSV"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function</ci>
+              <ci>d_v_u</ci>
+              <ci>VSV</ci>
+              <ci>Tu</ci>
+              <ci>h_u_v</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_3" name="-tumor/Ti-&gt; tumor/mIL12_mGMCSF" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="mIL12_mGMCSF" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Ti"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_three_variables</ci>
+              <ci>If_mIL12_mGMCSF</ci>
+              <ci>delta</ci>
+              <ci>Ti</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_4" name="-tumor/mIL12_mGMCSF-&gt; tumor/M1" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="mIL12_mGMCSF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>a_m1_IL12</ci>
+              <ci>mIL12_mGMCSF</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_5" name="VSV -M1-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="VSV" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="M1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function_alt</ci>
+              <ci>d_m1_v</ci>
+              <ci>VSV</ci>
+              <ci>M1</ci>
+              <ci>M2</ci>
+              <ci>h_m</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_6" name="VSV -&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="VSV" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>e_v</ci>
+              <ci>VSV</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_7" name="VSV -Teff-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="VSV" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Teff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function</ci>
+              <ci>d_e_v</ci>
+              <ci>VSV</ci>
+              <ci>Teff</ci>
+              <ci>h_e</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_8" name="M1 -VSV-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="M1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="VSV"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>a_m1_v</ci>
+              <ci>VSV</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Reaction_9" name="tumor/mIL12_mGMCSF -&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="mIL12_mGMCSF" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>mIL12_mGMCSF_el</ci>
+              <ci>mIL12_mGMCSF</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Teff_activation_via_DC" name="-&gt; Teff" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="Teff" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>p_e</ci>
+              <ci>DC_m</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Teff_elimination" name="tumor/Teff -&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Teff" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_two_variables</ci>
+              <ci>e_e</ci>
+              <ci>Teff</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Teff_inactivation_via_uninfected_tumor_cells" name="tumor/Teff -tumor/Tu-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Teff" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Tu"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>multiple_three_variables</ci>
+              <ci>d_u_e</ci>
+              <ci>Tu</ci>
+              <ci>Teff</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="infected_tumor_cells_elimination_via_M1" name="Ti -M1-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Ti" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="M1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function_alt</ci>
+              <ci>d_m1_i</ci>
+              <ci>Ti</ci>
+              <ci>M1</ci>
+              <ci>M2</ci>
+              <ci>h_m</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="infected_tumor_cells_elimination_via_Teff" name="Ti -Teff, Ab_PD1_tm-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Ti" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Teff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function</ci>
+              <ci>d_e_i</ci>
+              <ci>Ti</ci>
+              <ci>Teff</ci>
+              <ci>h_e</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="tumor_elimination_via_M1" name="Tu -M1-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Tu" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="M1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function_alt</ci>
+              <ci>d_m1_u</ci>
+              <ci>Tu</ci>
+              <ci>M1</ci>
+              <ci>M2</ci>
+              <ci>h_m</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="tumor_growth" name="-&gt; Tu" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="Tu" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>logistic_growth</ci>
+              <ci>p_u</ci>
+              <ci>Tu</ci>
+              <ci>T_max</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="tumor_growth_via_M2" name="-M2-&gt; Tu" reversible="false">
+        <listOfProducts>
+          <speciesReference constant="false" species="Tu" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="M2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function</ci>
+              <ci>d_m2_u</ci>
+              <ci>Tu</ci>
+              <ci>M2</ci>
+              <ci>h_m</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="uninfected_tumor_cells_elimination_via_Teff" name="Tu -Teff, Ab_PD1_tm-&gt;" reversible="false">
+        <listOfReactants>
+          <speciesReference constant="false" species="Tu" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Teff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci>saturation_function</ci>
+              <ci>d_e_u</ci>
+              <ci>Tu</ci>
+              <ci>Teff</ci>
+              <ci>h_e</ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="VSV_injection" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <geq/>
+              <csymbol definitionURL="http://www.sbml.org/sbml/symbols/time" encoding="text">time</csymbol>
+              <ci>first_VSV_injection_day</ci>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="VSV">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <plus/>
+                <ci>VSV</ci>
+                <ci>first_VSV_dose</ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="VSV_injection_1" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <geq/>
+              <csymbol definitionURL="http://www.sbml.org/sbml/symbols/time" encoding="text">time</csymbol>
+              <ci>second_VSV_injection_day</ci>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="VSV">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <plus/>
+                <ci>VSV</ci>
+                <ci>second_VSV_dose</ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="VSV_injection_2" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <geq/>
+              <csymbol definitionURL="http://www.sbml.org/sbml/symbols/time" encoding="text">time</csymbol>
+              <ci>third_VSV_injection_day</ci>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="VSV">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <plus/>
+                <ci>VSV</ci>
+                <ci>third_VSV_dose</ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

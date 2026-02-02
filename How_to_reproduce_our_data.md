@@ -30,4 +30,8 @@
 
 2.1 <b>Open optimization with title "Optimization rVSV-GFP"</b>
 
-![Open_Optimization_rVSV_GFP]()
+![Open_Optimization_rVSV_GFP](https://github.com/DBgentech2023sirius/VSV-mIL12-mGMCSF/blob/main/Images/How%20to%20reproduce%20our%20data/Open_Optimization_rVSV_GFP.png?raw=true)
+
+2.2 <b>Configure optimization method and its settings</b>
+
+![Set_method_rVSV_GFP](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/Images/How%20to%20reproduce%20our%20data/Set_method_rVSV_GFP.png?raw=true)

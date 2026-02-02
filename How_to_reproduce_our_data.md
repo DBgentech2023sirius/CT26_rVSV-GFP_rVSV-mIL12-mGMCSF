@@ -1,11 +1,3 @@
-<style>
-
-.custom-list li::before {
-    content: "1."; /* Prefix */
-}
-
-</style>
-
 # How to reproduce our model
 
 ## 1. Fit model to the data of one mouse treated with PBS
@@ -16,3 +8,4 @@
   <li>Open optimization with title "Optimization PBS"</li>
 
 </ol>
+

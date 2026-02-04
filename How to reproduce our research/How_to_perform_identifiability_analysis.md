@@ -18,3 +18,10 @@
 ![Field_optimization](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/Images/How%20to%20reproduce%20our%20research/How%20to%20perform%20identifiability%20analysis/Field_optimization.png)
 <br>
 ![Choose_optimization_for_identification](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/Images/How%20to%20reproduce%20our%20research/How%20to%20perform%20identifiability%20analysis/Choose_optimization_for_identification.png)
+
+<b>4. Opposite the field «Parameter values» choose one of the optimizationInfo files from the directories with the optimization results in the tree. Choice depends on the parameter whose identifiability you want to check:</b>
+<ul>
+  <li>«Optimization PBS for identification» of <i>p_e</i> parameter</li>
+  <li>«Optimization rVSV-GFP for identification» of <i>d_v_u</i> parameter</li>
+  <li>«Optimization rVSV-mIL12-mGMCSF for identification» of <i>mIL12_mGMCSF_el</i> parameter</li>
+</ul>

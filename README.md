@@ -46,5 +46,5 @@ You can reproduce all plots used in our work in two ways (whichever is more conv
 
 ## How to reproduce our research in BioUML
 
-1. [Instructions](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/How_to_fit_our_model.md) on how to fit our model
-2. [Instructions](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/How_to_perform_identifiability_analysis.md) on how to perform the identifiability analysis of the fitted model parameters
+1. [Instructions](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/How%20to%20reproduce%20our%20research/How_to_fit_our_model.md) on how to fit our model
+2. [Instructions](https://github.com/DBgentech2023sirius/CT26_rVSV-GFP_rVSV-mIL12-mGMCSF/blob/main/How%20to%20reproduce%20our%20research/How_to_perform_identifiability_analysis.md) on how to perform the identifiability analysis of the fitted model parameters
